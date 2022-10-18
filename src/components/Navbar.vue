@@ -23,13 +23,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
+            <li class="nav-item" v-if="adminAccess">
+              <!-- V-IF UNTUK MENGFUNGSIKAN METHOD SESUAI ISI METHOD NYA, DENGAN NAMA YANG SESUAI -->
               <router-link class="nav-link" to="/home">Home</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="adminAccess">
               <router-link class="nav-link" to="/about">About</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="adminAccess">
               <router-link class="nav-link" to="/contact">Contact</router-link>
             </li>
             <li class="nav-item">
@@ -54,7 +55,14 @@
 <script>
 export default {
   name: "NavBar",
+  computed: {
+    // UNTUK AKSES ADMIN
+    adminAccess() {
+      return sessionStorage.getItem("role") === "admin";
+    },
+  },
   methods: {
+    // UNTUK LOGOUT, CLEAR DATA DARI STORAGE
     out() {
       sessionStorage.clear();
       this.$router.push("/");

@@ -52,7 +52,6 @@
   </div>
 </template>
 <script>
-// import Axios
 import axios from "axios";
 export default {
   name: "LoginPage",
@@ -86,6 +85,8 @@ export default {
       } else {
         var convertToString = JSON.stringify(login);
         sessionStorage.setItem("USER_DATA", convertToString);
+        // MEMBUAT KEY BARU DAN VALUE BERISI ROLE, AGAR TERBACA UNTUK AKSES
+        sessionStorage.setItem("role", login.role);
         this.$router.push("/home");
         window.location.reload();
       }
