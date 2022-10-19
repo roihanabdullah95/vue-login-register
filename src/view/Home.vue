@@ -66,7 +66,21 @@
                 >
                   Close
                 </button>
-                <button type="submit" class="btn btn-primary">Tambahkan</button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  v-show="!updateSubmitMobil"
+                >
+                  Tambahkan
+                </button>
+                <button
+                  type="button"
+                  v-show="updateSubmitMobil"
+                  class="btn btn-primary"
+                  @click="updateMobil(formMobil)"
+                >
+                  Update Mobil
+                </button>
               </form>
             </div>
           </div>
@@ -78,6 +92,7 @@
       <table class="table table-dark">
         <thead>
           <tr style="text-align: center">
+            <th>No.</th>
             <th>Merk Motor</th>
             <th>Tahun Buatan</th>
             <th>Action</th>
@@ -85,10 +100,12 @@
         </thead>
         <tbody>
           <tr
-            v-for="mobil in mobils"
+            v-for="(mobil, index) in mobils"
             :key="mobil.id"
             style="text-align: center"
           >
+            <!-- Perulangan Nomer Otomatis dengan {{ index + 1}} -->
+            <td>{{ index + 1 }}</td>
             <td>{{ mobil.name }}</td>
             <td>{{ mobil.tahun }}</td>
             <td>
@@ -97,71 +114,10 @@
                 class="btn btn-primary"
                 @click="editMobil(mobil)"
                 data-bs-toggle="modal"
-                data-bs-target="#editMobil"
+                data-bs-target="#exampleModal"
               >
                 Edit
               </button>
-              <!-- Modal -->
-              <div
-                class="modal fade"
-                id="editMobil"
-                tabindex="-1"
-                aria-labelledby="editMobilLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="editMobilLabel">
-                        Form Edit
-                      </h1>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body">
-                      <form @submit.prevent="updateMobil(formMobil)">
-                        <div class="form-floating mb-3">
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="floatingInput"
-                            placeholder="Merk Motor"
-                            v-model="formMobil.name"
-                            required
-                          />
-                          <label for="floatingInput">Merk Motor</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="floatingInput"
-                            placeholder="Merk Motor"
-                            v-model="formMobil.tahun"
-                            required
-                          />
-                          <label for="floatingInput">Tahun Buat</label>
-                        </div>
-
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                          Update
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
               ||
               <button class="btn btn-danger" @click="delMobil(mobil)">
                 Delete
@@ -220,6 +176,7 @@ export default {
     },
     // Edit Mobil
     editMobil(mobil) {
+      this.updateSubmitMobil = true;
       this.formMobil.id = mobil.id;
       this.formMobil.name = mobil.name;
       this.formMobil.tahun = mobil.tahun;
