@@ -94,8 +94,7 @@ export default {
   },
   mounted() {
     this.getUser();
-    // fungsi toggle pada app.vue
-    // this.$emit("toggleBar");
+    
   },
 };
 </script>

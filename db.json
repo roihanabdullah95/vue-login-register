@@ -12,5 +12,37 @@
       "password": "12345678",
       "role": "user"
     }
+  ],
+  "mobils": [
+    {
+      "name": "Honda 150",
+      "tahun": 2000,
+      "id": 100
+    },
+    {
+      "name": "Yamaha 125",
+      "tahun": 2001,
+      "id": 101
+    },
+    {
+      "id": 102,
+      "name": "Suzuki",
+      "tahun": 2002
+    },
+    {
+      "id": 103,
+      "name": "Bajaj",
+      "tahun": 2000
+    },
+    {
+      "id": 104,
+      "name": "Ferarri",
+      "tahun": "2021"
+    },
+    {
+      "name": "Honda 150",
+      "tahun": "2021",
+      "id": 105
+    }
   ]
 }
