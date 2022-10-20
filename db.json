@@ -15,9 +15,46 @@
   ],
   "mobils": [
     {
-      "id": 2,
-      "name": "Yamaha 150",
+      "id": 4,
+      "name": "Honda 150",
       "tahun": "2020"
+    },
+    {
+      "id": 5,
+      "name": "Yamaha 150",
+      "tahun": "2019"
+    },
+    {
+      "name": "Suzuki 150",
+      "tahun": "2020",
+      "id": 6
+    },
+    {
+      "id": 7,
+      "name": "Suzuki 150",
+      "tahun": "2020"
+    }
+  ],
+  "motors": [
+    {
+      "id": 3,
+      "name": "Yamaha 150",
+      "tahun": "2021"
+    },
+    {
+      "id": 4,
+      "name": "Honda 150",
+      "tahun": "2020"
+    },
+    {
+      "id": 5,
+      "name": "Ducati",
+      "tahun": "2020"
+    },
+    {
+      "id": 6,
+      "name": "Ducati",
+      "tahun": "2010"
     }
   ]
 }

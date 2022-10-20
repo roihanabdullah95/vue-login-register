@@ -27,16 +27,16 @@
               <!-- V-IF UNTUK MENGFUNGSIKAN METHOD SESUAI ISI METHOD NYA, DENGAN NAMA YANG SESUAI -->
               <router-link class="nav-link" to="/home">Home</router-link>
             </li>
-            <li class="nav-item" v-if="adminAccess">
+            <li class="nav-item">
               <router-link class="nav-link" to="/about">About</router-link>
             </li>
-            <li class="nav-item" v-if="adminAccess">
+            <li class="nav-item">
               <router-link class="nav-link" to="/contact">Contact</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/produk">Produk</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="adminAccess">
               <router-link class="nav-link" to="/detail">Detail</router-link>
             </li>
           </ul>

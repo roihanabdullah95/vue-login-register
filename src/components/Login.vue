@@ -83,18 +83,24 @@ export default {
       if (login === undefined) {
         alert("Username Or Password Not Found");
       } else {
+        // Meangambil Data ke session Storage
         var convertToString = JSON.stringify(login);
         sessionStorage.setItem("USER_DATA", convertToString);
         // MEMBUAT KEY BARU DAN VALUE BERISI ROLE, AGAR TERBACA UNTUK AKSES
         sessionStorage.setItem("role", login.role);
-        this.$router.push("/home");
-        window.location.reload();
+        // Kondisi Jika Sebagai Admin masuk ke Home kalo Non Admin ke About
+        if (sessionStorage.getItem("role") === "admin") {
+          this.$router.push("/home");
+          window.location.reload();
+        } else {
+          this.$router.push("/about");
+          window.location.reload();
+        }
       }
     },
   },
   mounted() {
     this.getUser();
-    
   },
 };
 </script>

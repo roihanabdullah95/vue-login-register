@@ -25,15 +25,18 @@
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Form Tambah
+                Form <span v-show="!updateSubmitMobil">Tambah</span>
+                <span v-show="updateSubmitMobil">Update</span>
               </h1>
               <button
                 type="button"
                 class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                @click="close"
               ></button>
             </div>
+            <!-- Mulai Form -->
             <div class="modal-body">
               <form @submit.prevent="addMobil">
                 <div class="form-floating mb-3">
@@ -63,6 +66,7 @@
                   type="button"
                   class="btn btn-secondary"
                   data-bs-dismiss="modal"
+                  @click="close"
                 >
                   Close
                 </button>
@@ -206,6 +210,10 @@ export default {
         let index = this.mobils.indexOf();
         this.mobils.splice(index, 1);
       });
+    },
+    // Close
+    close() {
+      window.location.reload();
     },
   },
 };
