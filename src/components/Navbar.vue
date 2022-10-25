@@ -40,13 +40,23 @@
               <router-link class="nav-link" to="/detail">Detail</router-link>
             </li>
           </ul>
-          <a
-            class="btn btn-outline-danger my-2 my-sm-0"
-            style="margin-left: 830px"
-            @click="out"
-          >
-            <i class="fas fa-sign-out-alt"></i>Logout</a
-          >
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </router-link>
+            </li>
+            <li class="nav-item" v-if="adminAccess">
+              <router-link class="nav-link" to="/">
+                <i class="fas fa-sign-in-alt"></i> Login
+              </router-link>
+            </li>
+            <li class="nav-item" v-show="!btnLogin">
+              <a class="btn btn-outline-danger my-2 my-sm-0" @click="out">
+                <i class="fas fa-sign-out-alt"></i> Logout</a
+              >
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
@@ -55,6 +65,12 @@
 <script>
 export default {
   name: "NavBar",
+  data() {
+    return {
+      btnLogin: false,
+      logout: true,
+    };
+  },
   computed: {
     // UNTUK AKSES ADMIN
     adminAccess() {

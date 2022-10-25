@@ -15,46 +15,33 @@
   ],
   "mobils": [
     {
-      "id": 4,
-      "name": "Honda 150",
-      "tahun": "2020"
+      "id": 1,
+      "name": "Mitsubishi",
+      "tahun": 2021,
+      "harga": 900,
+      "type": "mobil"
     },
     {
-      "id": 5,
-      "name": "Yamaha 150",
-      "tahun": "2019"
-    },
-    {
-      "name": "Suzuki 150",
-      "tahun": "2020",
-      "id": 6
-    },
-    {
-      "id": 7,
-      "name": "Suzuki 150",
-      "tahun": "2020"
+      "id": 2,
+      "name": "Mustang",
+      "tahun": 2020,
+      "harga": 850,
+      "type": "mobil"
     }
   ],
   "motors": [
     {
-      "id": 3,
-      "name": "Yamaha 150",
-      "tahun": "2021"
-    },
-    {
-      "id": 4,
-      "name": "Honda 150",
-      "tahun": "2020"
-    },
-    {
-      "id": 5,
       "name": "Ducati",
-      "tahun": "2020"
+      "tahun": "2004",
+      "harga": "90",
+      "id": 1
     },
     {
-      "id": 6,
-      "name": "Ducati",
-      "tahun": "2010"
+      "id": 2,
+      "name": "Bajaj",
+      "tahun": "2015",
+      "harga": "15",
+      "type": "motor"
     }
   ]
 }

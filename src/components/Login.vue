@@ -53,6 +53,7 @@
 </template>
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 export default {
   name: "LoginPage",
   data() {
@@ -81,20 +82,39 @@ export default {
       );
       //   kondisi jika akun benar akan langsung masuk ke page home kalo salah muncul alert
       if (login === undefined) {
-        alert("Username Or Password Not Found");
+        Swal.fire(
+          "Akun yang Anda Masukan Salah",
+          "Silahkan Mengulangi Kembali",
+          "error"
+        );
       } else {
-        // Meangambil Data ke session Storage
+        // Mengambil Data ke session Storage
         var convertToString = JSON.stringify(login);
         sessionStorage.setItem("USER_DATA", convertToString);
         // MEMBUAT KEY BARU DAN VALUE BERISI ROLE, AGAR TERBACA UNTUK AKSES
         sessionStorage.setItem("role", login.role);
+
         // Kondisi Jika Sebagai Admin masuk ke Home kalo Non Admin ke About
         if (sessionStorage.getItem("role") === "admin") {
-          this.$router.push("/home");
-          window.location.reload();
+          Swal.fire({
+            icon: "success",
+            title: "Selamat Datang Admin",
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(() => {
+            this.$router.push("/home");
+            window.location.reload();
+          });
         } else {
-          this.$router.push("/about");
-          window.location.reload();
+          Swal.fire({
+            icon: "success",
+            title: "Selamat Datang User",
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(() => {
+            this.$router.push("/about");
+            window.location.reload();
+          });
         }
       }
     },

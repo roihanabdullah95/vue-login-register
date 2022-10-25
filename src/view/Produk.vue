@@ -10,6 +10,7 @@
             <th>No.</th>
             <th>Merk Mobil</th>
             <th>Tahun Buatan</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -22,6 +23,9 @@
             <td>{{ index + 1 }}</td>
             <td>{{ mobil.name }}</td>
             <td>{{ mobil.tahun }}</td>
+            <td>
+              <button @click="beli(mobil)" class="btn btn-success">Buy</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -37,6 +41,7 @@
             <th>No.</th>
             <th>Merk Motor</th>
             <th>Tahun Buatan</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -49,6 +54,7 @@
             <td>{{ index + 1 }}</td>
             <td>{{ motor.name }}</td>
             <td>{{ motor.tahun }}</td>
+            <td><button class="btn btn-success">Buy</button></td>
           </tr>
         </tbody>
       </table>
@@ -63,6 +69,11 @@ export default {
   name: "ProdukPage",
   components: {
     Navbar,
+  },
+  //Menerima data dari parent sebagai props
+  props: {
+    cart: Array,
+    setCart: Function,
   },
   data() {
     return {
@@ -109,6 +120,10 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    //function untuk beli dan masukkan ke cart
+    beli(mobil) {
+      this.setCart([...this.cart, mobil]);
     },
 
     // Close

@@ -7,6 +7,7 @@ import ProdukPage from "@/view/Produk.vue"
 import DetailPage from "@/view/Detail.vue"
 import Login from "@/components/Login.vue"
 import Register from "@/components/Register.vue"
+import Cart from "@/view/Cart.vue"
 import Vue from "vue"
 import Router from "vue-router"
 
@@ -46,6 +47,12 @@ const routes = [
         path: "/detail",
         name: "DetailPage",
         component: DetailPage
+    },
+    //Router Cart
+    {
+        path: "/cart",
+        name: "CartPage",
+        component: Cart
     },
 
 ];

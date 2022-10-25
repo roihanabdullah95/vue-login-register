@@ -1,7 +1,111 @@
 <template>
-  <div id="home">
+  <div id="detail">
     <Navbar />
     <!-- Data Mobil -->
+    <!-- MODAL DETAIL MOBIL-->
+    <div
+      class="modal fade"
+      id="mobildetail"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Modal {{ formMobil.name }}
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Merk Mobil</th>
+                  <th scope="col">Tahun Pembuatan</th>
+                  <th scope="col">Harga</th>
+                  <th scope="col">Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ formMobil.name }}</td>
+                  <td>{{ formMobil.tahun }}</td>
+                  <td>{{ formMobil.harga }} jt</td>
+                  <td>{{ formMobil.type }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL DETAIL MOTOR -->
+    <div
+      class="modal fade"
+      id="motordetail"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Modal {{ formMotor.name }}
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Merk Motor</th>
+                  <th scope="col">Tahun Pembuatan</th>
+                  <th scope="col">Harga</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ formMotor.name }}</td>
+                  <td>{{ formMotor.tahun }}</td>
+                  <td>{{ formMotor.harga }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Modal Add -->
     <div class="container my-0 py-5">
       <!-- Button trigger modal -->
@@ -62,6 +166,17 @@
                   />
                   <label for="floatingInput">Tahun Buat</label>
                 </div>
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="floatingInput"
+                    placeholder="Merk Motor"
+                    v-model="formMobil.harga"
+                    required
+                  />
+                  <label for="floatingInput">Harga</label>
+                </div>
 
                 <button
                   type="button"
@@ -100,6 +215,7 @@
             <th>No.</th>
             <th>Merk Mobil</th>
             <th>Tahun Buatan</th>
+            <th>Harga</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -113,7 +229,18 @@
             <td>{{ index + 1 }}</td>
             <td>{{ mobil.name }}</td>
             <td>{{ mobil.tahun }}</td>
+            <td>{{ mobil.harga }}</td>
             <td>
+              <button
+                data-bs-toggle="modal"
+                data-bs-target="#mobildetail"
+                type="button"
+                class="btn btn-success"
+                @click="mobilDetail(mobil)"
+              >
+                Detail
+              </button>
+              ||
               <button
                 type="button"
                 class="btn btn-primary"
@@ -126,6 +253,10 @@
               ||
               <button class="btn btn-danger" @click="delMobil(mobil)">
                 Delete
+              </button>
+              ||
+              <button class="btn btn-warning" @click="buyMobil(mobil)">
+                Buy
               </button>
             </td>
           </tr>
@@ -194,6 +325,17 @@
                   />
                   <label for="floatingInput2">Tahun Buat</label>
                 </div>
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="floatingInput2"
+                    placeholder="Merk Motor"
+                    v-model="formMotor.harga"
+                    required
+                  />
+                  <label for="floatingInput2">Harga</label>
+                </div>
 
                 <button
                   type="button"
@@ -232,6 +374,7 @@
             <th>No.</th>
             <th>Merk Motor</th>
             <th>Tahun Buatan</th>
+            <th>Harga</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -245,7 +388,18 @@
             <td>{{ index + 1 }}</td>
             <td>{{ motor.name }}</td>
             <td>{{ motor.tahun }}</td>
+            <td>{{ motor.harga }}</td>
             <td>
+              <button
+                data-bs-toggle="modal"
+                data-bs-target="#motordetail"
+                type="button"
+                class="btn btn-success"
+                @click="motorDetail(motor)"
+              >
+                Detail
+              </button>
+              ||
               <button
                 type="button"
                 class="btn btn-primary"
@@ -259,6 +413,10 @@
               <button class="btn btn-danger" @click="delMotor(motor)">
                 Delete
               </button>
+              ||
+              <button class="btn btn-warning" @click="buyMotor(motor)">
+                Buy
+              </button>
             </td>
           </tr>
         </tbody>
@@ -270,6 +428,7 @@
 <script>
 import Navbar from "../components/Navbar.vue";
 import axios from "axios";
+import Swal from "sweetalert2";
 export default {
   name: "DetailPage",
   components: {
@@ -281,15 +440,19 @@ export default {
         id: "",
         name: "",
         tahun: "",
+        harga: "",
+        type: "mobil",
       },
-      mobils: "",
+      mobils: [],
       updateSubmitMobil: false,
       formMotor: {
         id: "",
         name: "",
         tahun: "",
+        harga: "",
+        type: "motor",
       },
-      motors: "",
+      motors: [],
       updateSubmitMotor: false,
     };
   },
@@ -299,6 +462,11 @@ export default {
     }
     this.loadMobil();
     this.loadMotor();
+  },
+  //Menerima data dari parent
+  props: {
+    cart: Array,
+    setCart: Function,
   },
   methods: {
     loadMobil() {
@@ -322,10 +490,18 @@ export default {
         });
     },
     addMobil() {
-      axios.post("http://localhost:3000/mobils/", this.formMobil).then(() => {
+      // Fungsi merubah string to number baru di panggil di axios post, contoh database motor yg masih string
+      const payload = {
+        ...this.formMobil,
+        tahun: Number(this.formMobil.tahun),
+        harga: Number(this.formMobil.harga),
+      };
+      axios.post("http://localhost:3000/mobils/", payload).then(() => {
         this.loadMobil();
         this.formMobil.name = "";
         this.formMobil.tahun = "";
+        this.formMobil.harga = "";
+        this.formMobil.type = "mobil";
       });
       window.location.reload();
     },
@@ -334,6 +510,8 @@ export default {
         this.loadMotor();
         this.formMotor.name = "";
         this.formMotor.tahun = "";
+        this.formMotor.harga = "";
+        this.formMotor.type = "motor";
       });
       window.location.reload();
     },
@@ -343,12 +521,14 @@ export default {
       this.formMobil.id = mobil.id;
       this.formMobil.name = mobil.name;
       this.formMobil.tahun = mobil.tahun;
+      this.formMobil.harga = mobil.harga;
     },
     editMotor(motor) {
       this.updateSubmitMotor = true;
       this.formMotor.id = motor.id;
       this.formMotor.name = motor.name;
       this.formMotor.tahun = motor.tahun;
+      this.formMotor.harga = motor.harga;
     },
     // Mobil update
     updateMobil(formMobil) {
@@ -356,12 +536,14 @@ export default {
         .put("http://localhost:3000/mobils/" + formMobil.id, {
           name: this.formMobil.name,
           tahun: this.formMobil.tahun,
+          harga: this.formMobil.harga,
         })
         .then(() => {
           this.loadMobil();
           this.formMobil.id = "";
           this.formMobil.name = "";
           this.formMobil.tahun = "";
+          this.formMobil.harga = "";
           window.location.reload();
         })
         .catch((err) => {
@@ -373,12 +555,14 @@ export default {
         .put("http://localhost:3000/motors/" + formMotor.id, {
           name: this.formMotor.name,
           tahun: this.formMotor.tahun,
+          harga: this.formMotor.harga,
         })
         .then(() => {
           this.loadMotor();
           this.formMotor.id = "";
           this.formMotor.name = "";
           this.formMotor.tahun = "";
+          this.formMotor.harga = "";
           window.location.reload();
         })
         .catch((err) => {
@@ -387,22 +571,78 @@ export default {
     },
     // Delete Mobil
     delMobil(mobil) {
-      axios.delete("http://localhost:3000/mobils/" + mobil.id).then(() => {
-        this.loadMobil();
-        let index = this.mobils.indexOf();
-        this.mobils.splice(index, 1);
+      Swal.fire({
+        title: "Anda Yakin Menghapus Data ?",
+        showDenyButton: true,
+        icon: "question",
+        confirmButtonText: "Delete",
+        denyButtonText: "Batal",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.delete("http://localhost:3000/mobils/" + mobil.id).then(() => {
+            this.loadMobil();
+            let index = this.mobils.indexOf();
+            this.mobils.splice(index, 1);
+          });
+        }
       });
     },
     delMotor(motor) {
-      axios.delete("http://localhost:3000/motors/" + motor.id).then(() => {
-        this.loadMotor();
-        let index = this.motors.indexOf();
-        this.motors.splice(index, 1);
+      Swal.fire({
+        title: "Anda Yakin Menghapus Data ?",
+        showDenyButton: true,
+        icon: "question",
+        confirmButtonText: "Delete",
+        denyButtonText: "Batal",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.delete("http://localhost:3000/motors/" + motor.id).then(() => {
+            this.loadMotor();
+            let index = this.motors.indexOf();
+            this.motors.splice(index, 1);
+          });
+        }
       });
+    },
+    // DETAIL MOBIL
+    mobilDetail(mobil) {
+      this.formMobil.id = mobil.id;
+      this.formMobil.name = mobil.name;
+      this.formMobil.tahun = mobil.tahun;
+      this.formMobil.harga = mobil.harga;
+      this.formMobil.type = mobil.type;
+    },
+    // DETAIL MOTOR
+    motorDetail(motor) {
+      this.formMotor.id = motor.id;
+      this.formMotor.name = motor.name;
+      this.formMotor.tahun = motor.tahun;
+      this.formMotor.harga = motor.harga;
     },
     // Close
     close() {
       window.location.reload();
+    },
+    // Fungsi Buy
+    buyMobil(mobil) {
+      if (this.cart.filter((x) => x.id === mobil.id && x.type === "mobil")[0])
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `Mobil ${mobil.name} sudah ada di cart`,
+        });
+      this.setCart([...this.cart, mobil]);
+      Swal.fire("Berhasil", `Berhasil membeli mobil ${mobil.name}`, "success");
+    },
+    buyMotor(motor) {
+      if (this.cart.filter((x) => x.id === motor.id && x.type === "motor")[0])
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `Motor ${motor.name} sudah ada di cart`,
+        });
+      this.setCart([...this.cart, motor]);
+      Swal.fire("Berhasil", `Berhasil membeli Motor ${motor.name}`, "success");
     },
   },
 };
