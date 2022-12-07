@@ -15,13 +15,6 @@
   ],
   "mobils": [
     {
-      "id": 1,
-      "name": "Mitsubishi",
-      "tahun": 2021,
-      "harga": 900,
-      "type": "mobil"
-    },
-    {
       "id": 2,
       "name": "Mustang",
       "tahun": 2020,
@@ -30,12 +23,6 @@
     }
   ],
   "motors": [
-    {
-      "name": "Ducati",
-      "tahun": "2004",
-      "harga": "90",
-      "id": 1
-    },
     {
       "id": 2,
       "name": "Bajaj",

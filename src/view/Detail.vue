@@ -463,6 +463,12 @@ export default {
     this.loadMobil();
     this.loadMotor();
   },
+  // untuk memprivate jika login User tidak bisa mengakses sesuai role AdminAccess
+  created() {
+    if (JSON.parse(sessionStorage.getItem("USER_DATA")).role === "user") {
+      this.$router.push("/about");
+    }
+  },
   //Menerima data dari parent
   props: {
     cart: Array,

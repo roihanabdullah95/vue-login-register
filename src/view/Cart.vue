@@ -65,6 +65,7 @@ export default {
     },
   },
   methods: {
+    // Method menghapus dengan mencari data yg bernilai true true dari id dan type
     hapusCart(mobil) {
       this.setCart(
         this.cart.filter((x) => !(x.id === mobil.id && x.type === mobil.type))
